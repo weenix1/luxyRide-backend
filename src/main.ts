@@ -8,10 +8,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
   const config = new DocumentBuilder()
-    .setTitle('LuxyRyde Api')
-    .setDescription('The LuxyRyde api documentation')
+    .setTitle('LuxyRyde API')
     .setVersion('1.0')
-    .addTag('luxury ride')
     .build();
 
   const documentFactory = SwaggerModule.createDocument(app, config);
