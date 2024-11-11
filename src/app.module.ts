@@ -18,7 +18,7 @@ import { DriversModule } from './drivers/drivers.module';
     }),
     MongooseModule.forRoot(process.env.MONGOURI),
     ChatModule,
-    CustomerModule,
+    CustomersModule,
     AdminModule,
     DriversModule,
   ],
