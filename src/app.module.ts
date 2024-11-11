@@ -4,6 +4,9 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { ChatModule } from './chat/chat.module';
+import { CustomersModule } from './customers/customers.module';
+import { AdminModule } from './admin/admin.module';
+import { DriversModule } from './drivers/drivers.module';
 
 @Module({
   imports: [
@@ -13,10 +16,11 @@ import { ChatModule } from './chat/chat.module';
       envFilePath: ['.env.development', '.env'],
       cache: true,
     }),
-    MongooseModule.forRoot(
-      process.env.MONGOURI,
-    ),
+    MongooseModule.forRoot(process.env.MONGOURI),
     ChatModule,
+    CustomerModule,
+    AdminModule,
+    DriversModule,
   ],
   controllers: [AppController],
   providers: [AppService],
