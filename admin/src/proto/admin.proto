@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package admin;
+
+service AdminService {
+  rpc GetAdminInfo (AdminRequest) returns (AdminResponse);
+}
+
+message AdminRequest {
+  string id = 1;
+}
+
+message AdminResponse {
+  string id = 1;
+  string name = 2;
+}
