@@ -1,24 +1,17 @@
 import { Module } from '@nestjs/common';
 import { ClientsModule } from '@nestjs/microservices';
-import { GatewayController } from './gateway.controller';
-import {
-  customersGrpcOptions,
-  driversGrpcOptions,
-} from './grpc-client.options';
+import { customersGrpcOptions } from './grpc-client.options';
+import { CustomersGateway } from './controllers/customers.gateway.';
 
 @Module({
   imports: [
     ClientsModule.register([
-      {
-        name: 'DRIVER_PACKAGE',
-        ...driversGrpcOptions,
-      },
       {
         name: 'CUSTOMER_PACKAGE',
         ...customersGrpcOptions,
       },
     ]),
   ],
-  controllers: [GatewayController],
+  controllers: [CustomersGateway],
 })
 export class GatewayModule {}

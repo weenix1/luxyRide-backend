@@ -1,14 +1,14 @@
 import { Controller } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
 import { CustomersService } from './customers.service';
-import { Customer } from 'libs/common/src/interfaces/transport.interface';
+import { SignupDto, SignupResponse } from './customers.interface';
 
 @Controller()
 export class CustomersController {
   constructor(private readonly customersService: CustomersService) {}
 
-  @GrpcMethod('CustomerService', 'FindOne')
-  findOne(data: { id: number }): Customer {
-    return this.customersService.findOne(data.id);
+  @GrpcMethod('CustomerService', 'Signup')
+  async signup(data: SignupDto): Promise<SignupResponse> {
+    return this.customersService.signup(data);
   }
 }
